@@ -1,5 +1,4 @@
-
-# 1. two pointer 
+# 1. two pointer
 mapping = {
     "one": 1,
     "two": 2,
@@ -12,8 +11,8 @@ mapping = {
     "nine": 9,
 }
 
-def get_number(text):
 
+def get_number(text):
     first_digit = None
     last_digit = None
     for char in text:
@@ -26,6 +25,7 @@ def get_number(text):
             last_digit = int(char)
             break
     return first_digit * 10 + last_digit
+
 
 def get_number2(text):
     buffer = ""
@@ -37,7 +37,9 @@ def get_number2(text):
             break
         else:
             buffer += char
-            valid_substring = [substring for substring in mapping.keys() if substring in buffer]
+            valid_substring = [
+                substring for substring in mapping.keys() if substring in buffer
+            ]
             if valid_substring:
                 first_digit = mapping[valid_substring[0]]
                 break
@@ -48,17 +50,18 @@ def get_number2(text):
             break
         else:
             buffer = char + buffer
-            valid_substring = [substring for substring in mapping.keys() if substring in buffer]
+            valid_substring = [
+                substring for substring in mapping.keys() if substring in buffer
+            ]
             if valid_substring:
                 last_digit = mapping[valid_substring[0]]
                 break
     return first_digit * 10 + last_digit
-            
 
 
 with open("input.txt", "r") as f:
     lines = [line.rstrip() for line in f]
-    total_part1 = 0 
+    total_part1 = 0
     total_part2 = 0
     for line in lines:
         total_part1 += get_number(line)
